@@ -1,0 +1,73 @@
+{% extends 'MainPage.html' %}
+
+
+{% load static %}
+{% block title %}EndEmic{% endblock title %}
+
+
+{% load static %}
+{% block body %}
+<div class="padd">
+    <div class="bdy">
+        <div class="Kategory">
+            <div class="NameConteiner">
+                <center><p><strong><em>Категории</em></strong></p></center>
+            </div>
+
+
+            <div class="conteiner">
+            {% for i in categ %}
+                <div class="kat">
+                    <a href="category/{{i.id}}/">
+                        <div class="col-md-auto col-3">
+                            <button class="btn btn-dark">{{i.name}}</button>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+            </div>
+
+
+        </div>
+    </div>
+    <div class="bdy">
+        <div class="MainConteiner">
+            <div class="NameConteiner">
+                <center><p><strong><em>Топ товаров</em></strong></p></center>
+            </div>
+
+            <div class="conteiner">
+
+                {% for i in prod %}
+
+                <div class="product">
+                    <div class="imgh">
+                        <a href="product/{{i.id}}/">
+                        <img class="imgProd" src="{{i.img.url}}" alt="">
+                    </a>
+                    </div>
+                    <div class="nameProduct">
+                        <p class="card-text"><div class="perenos">{{i.name}}</div></p>
+                    </div>
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+
+        </div>
+    </div>
+
+        <div class="bdy">
+
+            <div class="NameConteiner">
+                <center><p><strong><em>Компании - партнеры</em></strong></p></center>
+            </div>
+
+            <div class="conteiner">
+                <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A5095e7a373cc8680e8c7825764f9e2871bff717f934d5f7e907ba593f7991fb3&amp;width=800&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+            </div>   
+        </div>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'MainPage.html' %}
+
+
+{% block title %}
+EndEmic Фирма
+{% endblock title %}
+
+
+{% block body %}
+
+
+<div class="padd">
+    <div class="bdy">
+        <div class="NameConteiner">
+                <center><p><strong><em>{{firm.name}}</em></strong></p></center>
+            </div>
+        <div class="jumbotron w-100 py-5 mx-auto">
+
+
+            {% for cat in firm.categor.all %}
+                 <h4>{{cat}}</h4>
+            {% endfor %}
+
+<!--                    <h4>{{product.firmName}}</h4>-->
+                    <p class="lead">
+                        {{firm.descrip}}<br>
+                    </p>
+            <img class="imgProd" src="{{firm.img.url}}" alt="">
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+

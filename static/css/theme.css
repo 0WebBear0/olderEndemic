@@ -1,0 +1,65 @@
+body {
+    background-color: #FFF;
+}
+
+.nameProduct {
+    text-align: center;
+    font-size: 1.25vw;
+    word-wrap: normal;
+    width: 6vw;
+}
+
+.padd {
+    padding: 0 6vw 6vw 6vw;
+}
+
+.bdy {
+    background-color: #EEE;
+    margin: 2vw;
+    border-radius: .5vw;
+}
+
+.imgProd {
+    width: 6vw;
+    height: 8vw;
+    border-radius: 0.5vw;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.imgh {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.conteiner {
+    display: flex;
+    padding: 2vw;
+    max-width: 92vw;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.kat {
+    flex-wrap: wrap;
+    padding: 1vw;
+}
+
+.product {
+    border-radius: 0.5vw;
+    background-color: #E5E5DF;
+    flex-wrap: wrap;
+    padding: 1.5vw;
+    word-break: break-all;
+    width: 6vw;
+}
+
+.NameConteiner {
+    padding-top: 1vw;
+}
+
+.perenos {
+    word-wrap: normal;
+}

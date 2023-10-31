@@ -1,0 +1,28 @@
+{% extends 'MainPage.html' %}
+
+
+{% block title %}
+EndEmic
+{% endblock title %}
+
+
+{% block body %}
+<div class="padd">
+    <div class="bdy">
+        <div class="NameConteiner">
+                <center><p><strong><em>{{product.name}}</em></strong></p></center>
+            </div>
+        <div class="jumbotron w-100 py-5 mx-auto">
+                    <h1>{{product.category}}</h1>
+                    <h4>{{product.firmName}}</h4>
+                    <p class="lead">
+                        {{product.Description}}<br>
+                    </p>
+            Цена товара: {{product.price}} руб.
+            <img class="imgProd" src="{{product.img.url}}" alt="">
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+

@@ -1,0 +1,36 @@
+{% extends 'MainPage.html' %}
+
+
+{% block title %}
+EndEmic
+{% endblock title %}
+
+
+{% block body %}
+<div class="padd">
+    <div class="bdy">
+        <div class="NameConteiner">
+                <center><p><strong><em>{{categ.name}}</em></strong></p></center>
+                <div class="conteiner">
+
+                {% for i in prod %}
+
+                <div class="product">
+                    <div class="imgh">
+                        <a href="{% url 'product_detail' i.id %}">
+                        <img class="imgProd" src="{{i.img.url}}" alt="">
+                    </a>
+                    </div>
+                    <div class="nameProduct">
+                        <p class="card-text"><div class="perenos">{{i.name}}</div></p>
+                    </div>
+                </div>
+
+                {% endfor %}
+
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

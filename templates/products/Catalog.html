@@ -1,0 +1,47 @@
+{% extends 'MainPage.html' %}
+
+
+{% block title %}
+EndEmic
+{% endblock title %}
+
+
+
+{% block body %}
+
+<div class="bdy">
+        <div class="MainConteiner">
+
+            <div class="NameConteiner">
+                <center><p><strong><em>Товары</em></strong></p></center>
+            </div>
+
+
+            <div class="conteiner">
+
+                {% for i in prod %}
+
+                <div class="product">
+                    <div class="imgh">
+                        <a href="{% url 'product_detail' i.id %}">
+                        <img class="imgProd" src="{{i.img.url}}" alt="">
+                    </a>
+                    </div>
+                    <div class="nameProduct">
+                        <p class="card-text"><div class="perenos">{{i.name}}</div></p>
+                    </div>
+                    <div class="nameProduct">
+                        <p class="card-text"><div class="perenos">Цена товара: {{i.price}}</div></p>
+                    </div>
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+
+        </div>
+    </div>
+
+{% endblock %}
+

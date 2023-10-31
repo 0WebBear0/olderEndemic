@@ -1,0 +1,12 @@
+{% extends 'MainPage.html' %}
+
+
+{% block title %}
+EndEmic
+{% endblock title %}
+
+
+{% block body %}
+{% endblock %}
+
+
