@@ -1,65 +1,100 @@
 body {
-    background-color: #FFF;
+    background-color: #0B0E14;
+    font-family: Montserrat, sans-serif;
 }
 
 .nameProduct {
-    text-align: center;
-    font-size: 1.25vw;
-    word-wrap: normal;
-    width: 6vw;
+    padding: 7px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    text-decoration: none;
 }
+
+.nameProduct span {
+    color: #0B0E14;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
 
 .padd {
     padding: 0 6vw 6vw 6vw;
 }
 
 .bdy {
-    background-color: #EEE;
+    background-color: transparent;
     margin: 2vw;
-    border-radius: .5vw;
+
+    border-radius: 30px;
 }
 
 .imgProd {
-    width: 6vw;
-    height: 8vw;
-    border-radius: 0.5vw;
-    display: block;
-    margin-left: auto;
-    margin-right: auto
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    flex-shrink: 0;
+
+    object-fit: cover;
 }
 
-.imgh {
-    display: block;
-    margin-left: auto;
-    margin-right: auto
+.imgH {
+    max-width: 433px;
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 20px;
 }
 
 .conteiner {
-    display: flex;
     padding: 2vw;
     max-width: 92vw;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
 
-.kat {
+    display: flex;
+    justify-content: center;
     flex-wrap: wrap;
-    padding: 1vw;
+    flex-direction: row;
+    gap: 10px;
 }
 
 .product {
-    border-radius: 0.5vw;
-    background-color: #E5E5DF;
-    flex-wrap: wrap;
-    padding: 1.5vw;
-    word-break: break-all;
-    width: 6vw;
+    border-radius: 20px;
+    background: #ED500A;
+
+    width: max-content;
+    max-width: 230px;
+    overflow: hidden;
+    text-decoration: none;
 }
 
 .NameConteiner {
     padding-top: 1vw;
+    font-size: 32px;
+    color: #F8E6DE;
+}
+
+.perenos p {
+    margin: 0;
 }
 
 .perenos {
-    word-wrap: normal;
+    word-wrap: break-word;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.my-btn {
+    border-radius: 20px;
+    border: 1px solid #F8E6DE;
+    color: #F8E6DE;
+    background: transparent;
+
+    display: inline-flex;
+    padding: 15px 57px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }

@@ -2,106 +2,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    {% load static %}<link rel="shortcut icon" type="image/png" href="{% static "img/icon.png" %}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    {% load static %}<link rel="stylesheet" type="text/css" href="{% static "css/theme.css" %}">
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static "img/icon.png" %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Linden+Hill&family=Montserrat:wght@200;300;400;500;600;700&display=swap"
+          rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/theme.css" %}">
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-  <header class="p-3 bg-dark text-white">
+<header class="p-3 text-white" style="background-color: #0B0E14">
     <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-        </a>
+        <div class="d-flex align-items-center justify-content-center justify-content-lg-start" style="flex-wrap: nowrap">
+            <ul class="nav me-lg-auto mb-2 mb-md-0" style="width: 100%;">
+                <li><a href="{% url 'Home' %}" class="nav-link header__logo px-2">EndEmic</a></li>
+            </ul>
 
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="{% url 'Home' %}" class="nav-link px-2 text-white">EndEmic</a></li>
-          <li class="nav-link px-2 text-white">|</li>
-          <li><a href="{% url 'Catalog' %}" class="nav-link px-2 text-white">Catalog</a></li>
-          <li class="nav-link px-2 text-white">|</li>
-          <li><a href="{% url 'Map' %}" class="nav-link px-2 text-white">Map & Firm</a></li>
-        </ul>
+            <div class="d-flex align-items-center justify-content-center justify-content-lg-start" style="width: 100%;">
+                <ul class="nav gap-2 px-2 me-lg-auto mb-2 mb-md-0" style="flex-wrap: nowrap">
+                    <li><a href="{% url 'Catalog' %}" class="nav-link px-2 text-white">Catalog</a></li>
+                    <li><a href="{% url 'Map' %}" class="nav-link px-2 text-white">Map & Firm</a></li>
+                </ul>
 
-<!--        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">-->
-<!--          <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">-->
-<!--        </form>-->
+                {% if user.is_authenticated %}
 
+                    <div class="text-end">
 
+                        <button type="button" id="openDialog" class="btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" stroke="#F8E6DE" fill="currentColor"
+                                 class="bi bi-person" viewBox="0 0 16 16">
+                                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
+                            </svg>
+                        </button>
+                        <dialog>
+                            <p>Вы действительно хотите выйти из аккаунта?</p>
+                            <p>
+                                <button onclick="document.location='{% url 'logout' %}'">Выйти из аккаунта</button>
+                            </p>
+                            <p>
+                                <button id="closeDialog">Закрыть окно</button>
+                            </p>
+                        </dialog>
+                        <script>
+                            var dialog = document.querySelector('dialog');
+                            document.querySelector('#openDialog').onclick = function () {
+                                dialog.show();
+                            }
+                            document.querySelector('#closeDialog').onclick = function () {
+                                dialog.close();
+                            }
+                        </script>
+                    </div>
 
-        {% if user.is_authenticated %}
+                {% else %}
 
-        <div class="text-end">
+                    <div class="text-end">
 
-                <button type="button" id="openDialog" class="btn btn-warning">
-                    {{ user.username }}
-                </button>
-                      <dialog>
-                        <p>Вы действительно хотите выйти из аккаунта?</p>
-                        <p><button onclick="document.location='{% url 'logout' %}'">Выйти из аккаунта</button></p>
-                        <p><button id="closeDialog">Закрыть окно</button></p>
-                      </dialog>
-            <script>
-                       var dialog = document.querySelector('dialog');
-                       document.querySelector('#openDialog').onclick = function() {
-                        dialog.show();
-                       }
-                       document.querySelector('#closeDialog').onclick = function() {
-                        dialog.close();
-                       }
-            </script>
-          </div>
+                        <button type="button" class="btn btn-warning" onclick="document.location='{% url 'login' %}'">
+                            Log In
+                        </button>
 
-        {% else %}
+                    </div>
+                {% endif %}
+            </div>
 
-        <div class="text-end">
-
-                <button type="button" class="btn btn-warning" onclick="document.location='{% url 'login' %}'">
-                    Log In
-                </button>
 
         </div>
-        {% endif %}
+    </div>
+</header>
 
 
+{% block body %}{% endblock %}
 
-      </div>
-    </div></header>
+<footer class="text-center text-lg-start" style="background-color: #0B0E14">
+    <!-- Grid container -->
+    <div class="container p-4" style="display: flex; justify-content:center;">
+        <!--Grid row-->
+        <div class="row">
+            <h5 class="text-uppercase header__logo">
+                <center>EndEmic</center>
+            </h5>
+            <p>
+            <center style="color: #F8E6DE;">
+                Развивающаяся компания, предоставляющая услуги продажи товаров в сети.
+            </center>
+            </p>
+        </div>
+        <!--Grid row-->
+    </div>
+    <!-- Grid container -->
 
-
-
-
-  {% block body %}{% endblock %}
-
-  <footer class="bg-light text-center text-lg-start">
-  <!-- Grid container -->
-  <div class="container p-4" style="display: flex; justify-content:center;">
-    <!--Grid row-->
-    <div class="row">
-        <h5 class="text-uppercase"><center>EndEmic</center></h5>
-        <p>
-          <center>
-            Развивающаяся компания, предоставляющая услуги продажи товаров в сети.
-          </center>
-        </p>
-      </div>
-    <!--Grid row-->
-  </div>
-  <!-- Grid container -->
-
-  <!-- Copyright -->
-  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-    © 2021 Copyright:
-    <a class="text-dark" href="">EndEmic</a>
-  </div>
-  <!-- Copyright -->
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); color: #F8E6DE;">
+        © 2023 Copyright:
+        <a class="text-dark" href="">EndEmic</a>
+    </div>
+    <!-- Copyright -->
 </footer>
 
 
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
 </body>
 </html>
+
+<style>
+    .header__logo {
+        color: #ED500A;
+        font-family: Montserrat, sans-serif;
+        font-size: 40px;
+        font-style: normal;
+        font-weight: 900;
+        line-height: normal;
+    }
+</style>

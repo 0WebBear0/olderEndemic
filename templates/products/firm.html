@@ -2,34 +2,39 @@
 
 
 {% block title %}
-EndEmic Фирма
+    EndEmic Фирма
 {% endblock title %}
 
 
 {% block body %}
 
-
-<div class="padd">
-    <div class="bdy">
-        <div class="NameConteiner">
-                <center><p><strong><em>{{firm.name}}</em></strong></p></center>
+    <div class="padd">
+        <div class="bdy">
+            <div class="NameConteiner">
+                <center><p><strong><em>{{ firm.name }}</em></strong></p></center>
             </div>
-        <div class="jumbotron w-100 py-5 mx-auto">
 
-
-            {% for cat in firm.categor.all %}
-                 <h4>{{cat}}</h4>
-            {% endfor %}
-
-<!--                    <h4>{{product.firmName}}</h4>-->
-                    <p class="lead">
-                        {{firm.descrip}}<br>
+            <div class="flex-column flex-lg-row" style="display: flex; gap: 20px;">
+                <img class="imgH" src="{{ firm.img.url }}" alt="">
+                <div class="jumbotron w-100 py-5 mx-auto" style="color: #ED500A;">
+                    {% for cat in firm.categor.all %}
+                        <h4>{{ cat }}</h4>
+                    {% endfor %}
+                    <p class="lead"
+                       style="color: #F8E6DE;
+text-align: justify;
+font-family: Montserrat;
+font-size: 18px;
+font-style: italic;
+font-weight: 400;
+line-height: normal;"
+                    >
+                       {{ firm.descrip }}<br>
                     </p>
-            <img class="imgProd" src="{{firm.img.url}}" alt="">
+                </div>
+            </div>
         </div>
     </div>
-</div>
-
 
 {% endblock %}
 

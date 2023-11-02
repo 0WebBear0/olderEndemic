@@ -2,27 +2,45 @@
 
 
 {% block title %}
-EndEmic
+    EndEmic
 {% endblock title %}
 
 
 {% block body %}
-<div class="padd">
-    <div class="bdy">
-        <div class="NameConteiner">
-                <center><p><strong><em>{{product.name}}</em></strong></p></center>
+    <div class="padd">
+        <div class="bdy">
+            <div class="NameConteiner">
+                <center><p><strong><em>{{ product.name }}</em></strong></p></center>
             </div>
-        <div class="jumbotron w-100 py-5 mx-auto">
-                    <h1>{{product.category}}</h1>
-                    <h4>{{product.firmName}}</h4>
-                    <p class="lead">
-                        {{product.Description}}<br>
+
+            <div class="flex-column flex-lg-row" style="display: flex; gap: 20px;">
+                <img class="imgH" src="{{ product.img.url }}" alt="">
+                <div class="jumbotron w-100 py-5 mx-auto" style="color: #ED500A;">
+                    <h1 style="color: #F8E6DE; font-family: Montserrat; font-size: 64px; font-style: normal; font-weight: 700;line-height: normal;">
+                        {{ product.category }}</h1>
+                    <h4 style="color: #F8E6DE;
+text-align: justify;
+font-family: Montserrat;
+font-size: 32px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;">{{ product.firmName }}</h4>
+                    <p class="lead"
+                       style="color: #F8E6DE;
+text-align: justify;
+font-family: Montserrat;
+font-size: 18px;
+font-style: italic;
+font-weight: 400;
+line-height: normal;"
+                    >
+                        {{ product.Description }}<br>
                     </p>
-            Цена товара: {{product.price}} руб.
-            <img class="imgProd" src="{{product.img.url}}" alt="">
+                    Цена товара: {{ product.price }} руб.
+                </div>
+            </div>
         </div>
     </div>
-</div>
 {% endblock %}
 
 
